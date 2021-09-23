@@ -5,9 +5,10 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "chart.js": "3.5.1",
     "react": "16.8.6",
+    "react-chartjs-2": "3.0.4",
     "react-dom": "16.8.6",
-    "react-router": "5.2.1",
     "react-scripts": "3.0.1",
     "react-simple-tree-menu": "1.1.18-rc.1"
   },
