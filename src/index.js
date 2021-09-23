@@ -190,7 +190,7 @@ function App() {
           <h1>My Page</h1>
         </div>
 
-        <div className="App main">
+        <div className="chartpane">
           <Line data={chartdata} options={chartoptions} />
           <Pie data={pieData} options={chartoptions} />
         </div>

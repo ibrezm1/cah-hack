@@ -11,3 +11,11 @@ ul {
 .pc {
   margin-left: 25%;
 }
+
+.chartpane {
+  padding: 50px;
+}
+
+canvas {
+  padding: 20px;
+}
