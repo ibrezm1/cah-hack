@@ -1,4 +1,4 @@
-export const dataInArray = [
+export const dataInArray1 = [
   {
     key: "Mississauga",
     label: "Mississauga",
