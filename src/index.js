@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import TreeMenu, { ItemComponent } from "react-simple-tree-menu";
-
+//import { Icon } from 'semantic-ui-react'
 import { Line, Pie } from "react-chartjs-2";
 
 import "react-simple-tree-menu/dist/main.css";
@@ -9,32 +9,55 @@ import "react-simple-tree-menu/dist/main.css";
 import "./styles.css";
 import "./w3.css";
 
+// https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_sidebar
+//
+
+//const styleLink = document.createElement("link");
+//styleLink.rel = "stylesheet";
+//styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+//document.head.appendChild(styleLink);
+
 const dataInArray = [
   {
-    key: "mammal",
-    label: "Mammal",
+    key: "Mississauga",
+    label: "Mississauga",
     url: "https://www.google.com/search?q=mammal",
     nodes: [
       {
-        key: "canidae",
-        label: "Canidae",
+        key: "Canada",
+        label: "Canada",
         url: "https://www.google.com/search?q=canidae",
         nodes: [
           {
-            key: "dog",
-            label: "Dog",
+            key: "Route-4344",
+            label: "Route-4344",
             url: "https://www.google.com/search?q=dog",
-            nodes: []
+            nodes: [
+              {
+                key: "Duke University",
+                label: "Duke University",
+                url: "https://www.google.com/search?q=wolf",
+                nodes: []
+              }
+            ]
           },
+
           {
-            key: "fox",
-            label: "Fox",
-            url: "https://www.google.com/search?q=fox",
+            key: "Route-4347",
+            label: "Route-4347",
+            url: "https://www.google.com/search?q=wolf",
             nodes: []
-          },
+          }
+        ]
+      },
+      {
+        key: "Dexcom",
+        label: "Dexcom",
+        url: "https://www.google.com/search?q=fox",
+        nodes: [
           {
-            key: "wolf",
-            label: "Wolf",
+            key: "Route-5347",
+            label: "Route-4347",
             url: "https://www.google.com/search?q=wolf",
             nodes: []
           }
@@ -43,8 +66,8 @@ const dataInArray = [
     ]
   },
   {
-    key: "reptile",
-    label: "Reptile",
+    key: "Ontario",
+    label: "Ontario",
     url: "https://www.google.com/search?q=reptile",
     nodes: [
       {
@@ -75,6 +98,16 @@ const dataInArray = [
 
 function App() {
   const [data, setData] = useState(dataInArray);
+  const [dt, setDt] = useState(new Date().toLocaleString());
+
+  useEffect(() => {
+    let secTimer = setInterval(() => {
+      setDt(new Date().toLocaleString());
+    }, 1000);
+
+    return () => clearInterval(secTimer);
+  }, []);
+
   const [openNodes, setOpenNodes] = useState(["mammal"]);
   const update = () => {
     setData((data) => [
@@ -98,40 +131,132 @@ function App() {
   // adding for Charts
   const chartdata = {
     labels: [
-      "01/01/2019",
-      "02/01/2019",
-      "03/01/2019",
-      "04/01/2019",
-      "05/01/2019",
-      "06/01/2019",
-      "07/01/2019"
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
     ],
     //backgroundColor: ['rgba(255,0,0,1)'],
     //lineTension: 1,
     datasets: [
       {
-        label: "HSN",
-        fill: false,
-        borderColor: "rgba(255, 0, 0, 0.3)",
-        borderWidth: 1,
-        pointRadius: 2,
-        data: [65, 59, 80, 81, 56, 55, 40]
-      },
-      {
-        label: "CPX",
-        fill: false,
-        borderColor: "rgba(0, 255, 0, 0.3)",
-        borderWidth: 1,
-        pointRadius: 2,
-        data: [70, 32, 45, 65, 87, 92, 99]
-      },
-      {
-        label: "Total",
+        label: "Predicted",
         fill: false,
         borderColor: "blue",
+        borderWidth: 1,
+        pointRadius: 2,
+        data: [
+          11,
+          23,
+          27,
+          61,
+          276,
+          338,
+          342,
+          345,
+          353,
+          380,
+          420,
+          458,
+          529,
+          588,
+          752,
+          830,
+          884,
+          924,
+          969,
+          1013,
+          1047,
+          1064,
+          1077,
+          1087
+        ]
+      },
+      {
+        label: "Normal",
+        fill: false,
+        borderColor: "green",
+        borderWidth: 1,
+        pointRadius: 2,
+        data: [
+          10,
+          29,
+          31,
+          0,
+          211,
+          312,
+          315,
+          317,
+          323,
+          338,
+          365,
+          407,
+          446,
+          493,
+          545,
+          646,
+          727,
+          777,
+          810,
+          841,
+          875,
+          886,
+          895,
+          904
+        ]
+      },
+      {
+        label: "Anomaly",
+        fill: false,
+        borderColor: "red",
         borderWidth: 2,
         pointRadius: 2,
-        data: [135, 91, 125, 144, 143, 143, 139]
+        data: [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          626,
+          705,
+          740,
+          772,
+          832,
+          893,
+          929,
+          951,
+          957,
+          967
+        ]
       }
     ]
   };
@@ -146,7 +271,7 @@ function App() {
     scales: {
       xAxes: [
         {
-          ticks: { display: false }
+          ticks: { display: true }
         }
       ]
     }
@@ -166,7 +291,7 @@ function App() {
     <div className="App">
       <div
         className="w3-sidebar w3-light-grey w3-bar-block"
-        style={{ width: "25%" }}
+        style={{ width: "20%" }}
       >
         <h4>Select the channed</h4>
         <button onClick={update}>update data</button>
@@ -187,12 +312,17 @@ function App() {
 
       <div className="pc">
         <div className="w3-container w3-teal">
-          <h1>My Page</h1>
+          <h1>CardinalHealth - Spotify</h1>
+          <div className="t">
+            <h5>Scrutinize the flow</h5>
+          </div>
+          <div className="ticker">
+            <h5>{dt}</h5>
+          </div>
         </div>
 
         <div className="chartpane">
           <Line data={chartdata} options={chartoptions} />
-          <Pie data={pieData} options={chartoptions} />
         </div>
       </div>
     </div>
